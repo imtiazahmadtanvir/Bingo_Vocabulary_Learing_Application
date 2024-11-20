@@ -12,7 +12,6 @@ const Header = () => {
             <h1 className="text-2xl font-bold">Lingo Bingo</h1>
           </div>
 
-          {/* Navigation */}
           <nav>
             <ul className="flex space-x-6 items-center">
               <li>
@@ -40,10 +39,10 @@ const Header = () => {
                   My Profile
                 </Link>
               </li>
-              {/* Login Button as Link */}
+            
               <li>
                 <Link
-                  to="/auth" // Assuming the login page is at "/auth"
+                  to="/auth" 
                   className="btn btn-primary bg-yellow-400 border-0 px-6 py-2 rounded-lg hover:bg-blue-500 transition"
                 >
                   Login

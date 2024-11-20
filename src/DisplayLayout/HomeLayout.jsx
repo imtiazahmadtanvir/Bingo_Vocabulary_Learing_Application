@@ -22,7 +22,6 @@ const HomeLayout = () => {
                         <Success></Success>
                         <Features></Features>
                         <Testimonials></Testimonials>
-
                         <Outlet></Outlet>
             </main>
 

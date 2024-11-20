@@ -42,12 +42,12 @@ const LessonDetails = () => {
                                     {lesson.word}
                                 </h2>
 
-                                <div className="text-gray-600 mb-3">
-                                    <p className="text-left pr-3"><strong>Pronunciation:</strong> {lesson.pronunciation}</p>
-                                    <p className="text-left pr-3"><strong>Meaning:</strong> {lesson.meaning}</p>
-                                    <p className="text-left pr-3"><strong>Part of Speech:</strong> {lesson.part_of_speech}</p>
-                                    <p className="text-left pr-3"><strong>Difficulty:</strong> {lesson.difficulty}</p>
-                                    <p className="text-left pr-3"><strong>When to Say:</strong> {lesson.when_to_say}</p>
+                                <div className="text-gray-800 mb-3">
+                                    <p className="text-left pr-3"><strong>Pronunciation: </strong> {lesson.pronunciation}</p>
+                                    <p className="text-left pr-3"><strong>Meaning: </strong> {lesson.meaning}</p>
+                                    <p className="text-left pr-3"><strong>Part of Speech: </strong> {lesson.part_of_speech}</p>
+                                    <p className="text-left pr-3"> <strong>Difficulty: </strong> {lesson.difficulty}</p>
+                                    <p className="text-left pr-3"> <strong>When to Say: </strong> {lesson.when_to_say}</p>
                                 </div>
 
                                 <div className="bg-gray-50 rounded-md p-4 border-l-4 border-blue-400">
