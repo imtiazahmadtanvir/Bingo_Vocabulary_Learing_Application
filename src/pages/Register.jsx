@@ -1,100 +1,121 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Register = () => {
-    const { createNewUser,setUser } = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState({});
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //get form data
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    if (name.length < 5) {
+      setError({ ...error, name: "name should be more then 5 character" });
+    }
+    const email = form.get("email");
+    const photo = form.get("photo");
+    const password = form.get("password");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const photo = e.target.photo.value;
-        const password = e.target.password.value;
+    createNewUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        updateUserProfile({ displayName: name, photoURL: photo })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        // ..
+      });
+  };
+  return (
+    <div className="min-h-screen flex justify-center items-center">
+      <div className=" w-10/12 mx-auto card bg-base-100 lg:w-full max-w-lg shrink-0 rounded-lg p-10">
+        <h2 className="lg:text-3xl text-2xl text-yellow-500 font-semibold text-center">
+          Register Your Account
+        </h2>
+        <form onSubmit={handleSubmit} className="card-body rounded-lg">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              name="name"
+              type="text"
+              placeholder="name"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          {error.name && (
+            <label className="label text-sx text-red-500">{error.name}</label>
+          )}
 
-        console.log({ name, email, photo, password });
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="photo-url"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          {/* email input  */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              name="email"
+              type="email"
+              placeholder="email"
+              className="input input-bordered"
+              required
+            />
+          </div>
 
-        createNewUser(email, password)
-            .then((result) => {
-                const user = result.user;
-                setUser(user)
-                console.log(user);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error(errorCode, errorMessage);
-            });
-    };
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              className="input input-bordered"
+              required
+            />
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">
+                Forgot password?
+              </a>
+            </label>
+          </div>
+          {error.register && <label className="label">{error.register}</label>}
 
-    return (
-        <div className="min-h-screen flex justify-center items-center">
-            <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-                <form onSubmit={handleSubmit} className="card-body">
-                    <h1 className="text-white text-2xl font-semibold text-center mb-4">
-                        Register Your Account
-                    </h1>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input
-                            name="name"
-                            type="text"
-                            placeholder="Your name"
-                            className="input input-bordered"
-                            required
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Your email"
-                            className="input input-bordered"
-                            required
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Photo URL</span>
-                        </label>
-                        <input
-                            name="photo"
-                            type="url"
-                            placeholder="Photo URL"
-                            className="input input-bordered"
-                            required
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="Your password"
-                            className="input input-bordered"
-                            required
-                        />
-                    </div>
-                    <div className="form-control mt-6">
-                        <button className="btn btn-primary w-full">Register</button>
-                    </div>
-                </form>
-                <p className="text-center font-medium mb-4">
-                    Already have an account?{" "}
-                    <Link className="text-red-500 hover:underline" to="/auth/login">
-                        Login
-                    </Link>
-                </p>
-            </div>
-        </div>
-    );
+          <div className="form-control mt-6">
+            <button className="btn btn-primary bg-yellow-400 rounded-lg">Register</button>
+          </div>
+        </form>
+        <p className="text-center font-semibold">
+          Allready Have An Account ?{" "}
+          <Link className="text-red-500" to="auth/login">
+            Login
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
 };
 
 export default Register;

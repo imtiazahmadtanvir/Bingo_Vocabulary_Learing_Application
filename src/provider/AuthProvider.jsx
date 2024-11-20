@@ -1,43 +1,65 @@
-import { useState, createContext, useEffect } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from "firebase/auth";
-import app from "../firebase/firebase.config"; // Ensure this is properly set up
+import { createContext, useEffect, useState } from "react";
+import app from "../firebase/firebase.config";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 
-// Create the AuthContext
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
+const auth = getAuth(app);
 
+// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-    // Initialize Firebase Auth
-    const auth = getAuth(app);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  // console.log(loading, user);
 
-    // Define state for the user
-    const [user, setUser] = useState(null);
+  const createNewUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    // Function to create a new user
-    const createNewUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
+  const userLogin = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+  const updateUserProfile = (updatedData) => {
+    return updateProfile(auth.currentUser, updatedData);
+  };
+
+  const authInfo = {
+    user,
+    setUser,
+    createNewUser,
+    logOut,
+    userLogin,
+    loading,
+    updateUserProfile,
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => {
+      unsubscribe();
     };
+  }, []);
 
-    // Create the authInfo object
-    const authInfo = {
-        user,
-        setUser,
-        createNewUser,
-    };
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          setUser(currentUser);
-        });
-        return () => {
-          unsubscribe();
-        };
-      }, []);
-
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children} {/* Render children */}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

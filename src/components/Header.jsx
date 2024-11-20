@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Header = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+
   return (
     <div className="bg-gray-100">
       <div className="text-gray-600 py-4">
@@ -39,14 +45,20 @@ const Header = () => {
                   My Profile
                 </Link>
               </li>
-            
+
               <li>
-                <Link
-                  to="/auth" 
+
+                {user && user?.email ? (
+                  <button onClick={logOut}
+                    className="btn btn-primary bg-yellow-400 border-0 px-6 py-2 rounded-lg hover:bg-blue-500 transition"
+                  >Log-out</button>
+
+                ) : (<Link
+                  to="/auth"
                   className="btn btn-primary bg-yellow-400 border-0 px-6 py-2 rounded-lg hover:bg-blue-500 transition"
                 >
                   Login
-                </Link>
+                </Link>)}
               </li>
             </ul>
           </nav>

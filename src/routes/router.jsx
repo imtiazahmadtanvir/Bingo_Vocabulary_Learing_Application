@@ -7,6 +7,8 @@ import About from "../pages/About";
 import AuthLayout from "../DisplayLayout/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Profile from "../pages/Profile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -15,17 +17,25 @@ const router = createBrowserRouter([
     },
     {
         path: "/lesson",
-        element: <Lesson></Lesson>,
+        element: <PrivateRoute><Lesson></Lesson></PrivateRoute>
+        ,
         loader: () => fetch("/voc.json"),
     },
     {
         path: "/lesson/:lessonId", // Dynamic route for lesson details
-        element: <LessonDetails></LessonDetails>,
+        element: <PrivateRoute><LessonDetails></LessonDetails></PrivateRoute>
+        ,
         loader: () => fetch("/voc.json").then(res => res.json())
     },
     {
         path: "/tutorials",
-        element: <Totorials></Totorials>,
+        element:<PrivateRoute><Totorials></Totorials></PrivateRoute> 
+        ,
+    },
+    {
+        path: "/profile",
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        ,
     },
     {
         path: "/about",
