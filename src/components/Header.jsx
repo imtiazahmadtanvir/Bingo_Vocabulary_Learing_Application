@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const Header = () => {
   return (
     <div className="bg-gray-100">
-      <div className=" text-gray-600 py-4">
+      <div className="text-gray-600 py-4">
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo and Title */}
           <div className="flex items-center">
@@ -15,38 +16,38 @@ const Header = () => {
           <nav>
             <ul className="flex space-x-6 items-center">
               <li>
-                <a href="#" className="hover:underline">
+                <Link to="/" className="hover:underline">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#start-learning" className="hover:underline">
+                <Link to="/lesson" className="hover:underline">
                   Start Learning
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#tutorials" className="hover:underline">
+                <Link to="/tutorials" className="hover:underline">
                   Tutorials
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about-us" className="hover:underline">
+                <Link to="/about" className="hover:underline">
                   About Us
-                </a>
+                </Link>
               </li>
               <li id="profile-link" className="hidden">
-                <a href="#my-profile" className="hover:underline">
+                <Link to="#my-profile" className="hover:underline">
                   My Profile
-                </a>
+                </Link>
               </li>
-              {/* Login Button */}
+              {/* Login Button as Link */}
               <li>
-                <button
-                  id="auth-button"
-                  className="btn btn-primary  bg-yellow-400 border-0  px-6 py-2 rounded-lg hover:bg-blue-500 transition"
+                <Link
+                  to="/auth" // Assuming the login page is at "/auth"
+                  className="btn btn-primary bg-yellow-400 border-0 px-6 py-2 rounded-lg hover:bg-blue-500 transition"
                 >
                   Login
-                </button>
+                </Link>
               </li>
             </ul>
           </nav>

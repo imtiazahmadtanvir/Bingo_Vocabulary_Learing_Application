@@ -1,12 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
-  const navigate = useNavigate(); // Initialize navigate function
-
-  const handleStartLearning = () => {
-    navigate("/lesson"); // Navigate to the Lesson page
-  };
-
   return (
     <div>
       <section id="banner" className="p-10 text-center text-white">
@@ -18,12 +12,13 @@ const Banner = () => {
             Expand your vocabulary with a fun, interactive learning experience.
             Learn, play, and grow every day!
           </p>
-          <button
-            onClick={handleStartLearning} // Add click handler
+          {/* Replace Button with Link */}
+          <Link
+            to="/lesson"
             className="btn btn-primary bg-yellow-400 text-blue-800 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 hover:shadow-md transition"
           >
             Start Learning Now
-          </button>
+          </Link>
         </div>
       </section>
     </div>
