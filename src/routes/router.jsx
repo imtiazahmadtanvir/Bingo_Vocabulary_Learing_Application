@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../DisplayLayout/HomeLayout";
+import Lesson from "../pages/Lesson";
+import LessonDetails from "../pages/LessonDetails";
 
 const router = createBrowserRouter([
     {
@@ -8,7 +10,13 @@ const router = createBrowserRouter([
     },
     {
         path: "/lesson",
-        element: <h1>Lesson</h1>,
+        element: <Lesson></Lesson>,
+        loader: () => fetch("/voc.json"),
+    },
+    {
+        path: "/lesson/:lessonId", // Dynamic route for lesson details
+        element: <LessonDetails></LessonDetails>,
+        loader: () => fetch("/voc.json").then(res => res.json())
     },
     {
         path: "/tutorials",
