@@ -5,7 +5,8 @@ import bg1 from "../assets/bg-1.avif";
 import bg2 from "../assets/bg2.avif";
 import bg3 from "../assets/bg-3.avif";
 import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/swiper-bundle.css'; // Correct Swiper CSS import
+import { Autoplay } from "swiper/modules";
+import "swiper/swiper-bundle.css";
 
 const Banner = () => {
   const { user } = useContext(AuthContext);
@@ -13,13 +14,21 @@ const Banner = () => {
   return (
     <div className="lg:w-8/12 mx-auto">
       {user && user?.email ? (
-        <section id="banner" className="p-10 text-center text-white">
+        <section
+          id="banner"
+          className="p-10 text-center text-white"
+          data-aos="fade-up"
+        >
           {/* Swiper Slider for Language Learning Images */}
           <Swiper
+            modules={[Autoplay]}
             spaceBetween={50}
             slidesPerView={1}
             loop={true}
-            autoplay={{ delay: 3000 }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
             className="mb-6"
           >
             <SwiperSlide>
@@ -27,7 +36,7 @@ const Banner = () => {
                 <img
                   src={bg1}
                   alt="Language Learning 1"
-                  className="w-full min-w-36 h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </SwiperSlide>
@@ -51,6 +60,7 @@ const Banner = () => {
             </SwiperSlide>
           </Swiper>
 
+          {/* Welcome Message */}
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-extrabold mb-4">
               Welcome to <span className="text-yellow-500">Lingo Bingo!</span>

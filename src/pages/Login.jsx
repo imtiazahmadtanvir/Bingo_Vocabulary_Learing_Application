@@ -16,10 +16,11 @@ const Login = () => {
 
     userLogin(email, password)
       .then(() => {
+        // Redirect to previous route or home
         navigate(location?.state?.from || "/");
       })
       .catch((err) => {
-        setError({ ...error, login: err.code });
+        setError({ ...error, login: "Invalid email or password" });
       });
   };
 
@@ -37,7 +38,7 @@ const Login = () => {
             <input
               name="email"
               type="email"
-              placeholder="email"
+              placeholder="Enter your email"
               className="input input-bordered"
               required
             />
@@ -49,7 +50,7 @@ const Login = () => {
             <input
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Enter your password"
               className="input input-bordered"
               required
             />

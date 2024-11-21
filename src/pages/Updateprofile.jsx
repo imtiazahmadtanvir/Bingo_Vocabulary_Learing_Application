@@ -1,81 +1,100 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const UpdateProfile = () => {
-  const { user, updateUserProfile } = useContext(AuthContext); // Ensure this function is available in context
+  const { user, updateUserProfile } = useContext(AuthContext);
   const [name, setName] = useState(user?.displayName || "");
   const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle the form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("Submitting update:", { name, photoURL }); // Debugging statement
+
     try {
-      await updateUserProfile(name, photoURL); // Ensure this function works properly
-      navigate("/profile"); // Redirect to profile page after update
+      await updateUserProfile({ displayName: name, photoURL });
+      setLoading(false);
+      navigate("/profile");
     } catch (error) {
-      console.error("Error updating profile", error);
-      setLoading(false); // Reset loading state if there's an error
+      console.error("Error updating profile:", error);
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Header */}
       <Header />
-      
-      <div className="bg-white container mx-auto p-6 flex-1">
-        <div className="shadow-lg rounded-2xl p-8 max-w-lg mx-auto flex flex-col">
-          <h1 className="text-2xl font-extrabold mb-6 text-center text-gray-900">Update Profile Information</h1>
 
-          {/* Form for updating profile */}
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      {/* Main Content */}
+      <main className="flex-1 flex items-center gap-4 justify-center bg-gray-100">
+        <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+          {/* Title */}
+          <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
+            Update Your Profile
+          </h2>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Name Field */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                Your name
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Name
               </label>
               <input
                 type="text"
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                placeholder="Name"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Enter your name"
                 required
               />
             </div>
 
+            {/* Photo URL Field */}
             <div>
-              <label htmlFor="photoURL" className="block text-sm font-medium text-gray-700">
-                Your photo URL
+              <label
+                htmlFor="photoURL"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Photo URL
               </label>
               <input
                 type="url"
                 id="photoURL"
                 value={photoURL}
                 onChange={(e) => setPhotoURL(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                placeholder="Photo URL"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Enter photo URL"
                 required
               />
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition ease-in-out duration-200"
+              className={`pt-3 my-4 w-full py-2 text-white font-semibold rounded-md ${
+                loading
+                  ? "bg-yellow-400 cursor-not-allowed"
+                  : "bg-yellow-400 hover:bg-blue-400 transition duration-300"
+              }`}
               disabled={loading}
             >
-              {loading ? "Updating..." : "Update Information"}
+              {loading ? "Updating..." : "Update Profile"}
             </button>
           </form>
         </div>
-      </div>
+      </main>
 
+      {/* Footer */}
       <Footer />
     </div>
   );

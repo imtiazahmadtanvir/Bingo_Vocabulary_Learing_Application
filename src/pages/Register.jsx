@@ -1,12 +1,12 @@
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { useContext, useState } from "react";
 
 const Register = () => {
   const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState({});
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -15,20 +15,28 @@ const Register = () => {
     const photo = form.get("photo");
     const password = form.get("password");
 
+    // Password Validation
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordPattern.test(password)) {
+      setError({ password: "Password must be at least 6 characters long, with both uppercase and lowercase letters." });
+      return; // Prevent form submission
+    }
+
     // Validate name length
     if (name.length < 5) {
-      setError({ name: "Name should be more than 5 characters" });
+      setError({ name: "Name should be more than 5 characters." });
       return; // Prevent submission if name is too short
     }
 
-    // Clear any existing errors
+    // Clear previous errors
     setError({});
-
+    
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
 
+        // Update profile with name and photo URL
         updateUserProfile({ displayName: name, photoURL: photo })
           .then(() => {
             navigate("/"); // Redirect after successful signup
@@ -101,6 +109,9 @@ const Register = () => {
               className="input input-bordered"
               required
             />
+            {error.password && (
+              <label className="label text-xs text-red-500">{error.password}</label>
+            )}
           </div>
 
           {error.register && <label className="label text-red-500">{error.register}</label>}

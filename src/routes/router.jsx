@@ -10,13 +10,13 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import PrivateRoute from "./PrivateRoute";
 import ForgetPassword from "../pages/ForgetPassword";
-import UpdateProfile from "../pages/UpdateProfile"; // Corrected component name
-
+import UpdateProfile from "../pages/Updateprofile"; // Corrected component name
+import Errorpage from "../pages/Errorpage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    errorElement: <h1>Error</h1>,
+    errorElement: <Errorpage></Errorpage>,
   },
   {
     path: "/lesson",
@@ -31,6 +31,8 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: () => fetch("/voc.json").then((res) => res.json()),
+    errorElement: <Errorpage></Errorpage>,
+
   },
   {
     path: "/tutorials",
@@ -39,6 +41,8 @@ const router = createBrowserRouter([
         <Totorials></Totorials>
       </PrivateRoute>
     ),
+    errorElement: <Errorpage></Errorpage>,
+
   },
   {
     path: "/profile",
@@ -47,14 +51,19 @@ const router = createBrowserRouter([
         <Profile></Profile>
       </PrivateRoute>
     ),
+    errorElement: <Errorpage></Errorpage>,
+
   },
   {
     path: "/update",
-    element: <UpdateProfile></UpdateProfile>, // Corrected component name
+    element:<PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+     , // Corrected component name
   },
   {
     path: "/about",
     element: <About></About>,
+    errorElement: <Errorpage></Errorpage>,
+
   },
   {
     path: "/auth",
@@ -72,8 +81,12 @@ const router = createBrowserRouter([
         path: "reset-password",
         element: <ForgetPassword />,
       },
+      
     ],
+    errorElement: <Errorpage></Errorpage>,
+
   },
+  
 ]);
 
 export default router;

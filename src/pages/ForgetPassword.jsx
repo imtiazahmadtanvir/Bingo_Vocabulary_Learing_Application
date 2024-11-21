@@ -1,10 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const ForgetPassword = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const [email, setEmail] = useState(location.state?.email || ""); // Retrieve the email passed from the login page or empty string
+  const [email, setEmail] = useState(location.state?.email || ""); // Retrieve email from the login page or default to empty
   const [error, setError] = useState("");
 
   const handleResetPassword = () => {
@@ -17,7 +16,7 @@ const ForgetPassword = () => {
     const body = encodeURIComponent(`Please reset your password for the following account: ${email}`);
     const mailtoLink = `mailto:passwordreset@gmail.com?subject=${subject}&body=${body}`;
 
-    // Redirect to Gmail to initiate the reset process
+    // Redirect the user to Gmail to initiate the reset process
     window.location.href = mailtoLink;
   };
 
