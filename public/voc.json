@@ -537,7 +537,229 @@
                 "lesson_no": 10,
                 "when_to_say": "When referring to a pet dog.",
                 "example": "Der Hund bellt. (dehr hoont belt) - The dog is barking."
-            }
+            },
+                {
+                  "id": "111",
+                  "word": "tragen",
+                  "pronunciation": "TRAH-gen",
+                  "meaning": "To carry",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 1,
+                  "when_to_say": "When referring to carrying items.",
+                  "example": "Ich trage eine Tasche. (ich TRAH-geh eye-neh TAH-sheh) - I carry a bag."
+                },
+                {
+                  "id": "112",
+                  "word": "laufen",
+                  "pronunciation": "LOW-fen",
+                  "meaning": "To walk/run",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 2,
+                  "when_to_say": "When talking about moving on foot.",
+                  "example": "Er läuft schnell. (air loyft shnell) - He runs fast."
+                },
+                {
+                  "id": "113",
+                  "word": "sprechen",
+                  "pronunciation": "SHPREH-khen",
+                  "meaning": "To speak",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 3,
+                  "when_to_say": "When referring to communication.",
+                  "example": "Ich spreche Deutsch. (ich SHPREH-kheh DOY-tch) - I speak German."
+                },
+                {
+                  "id": "114",
+                  "word": "machen",
+                  "pronunciation": "MAH-khen",
+                  "meaning": "To make/do",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 4,
+                  "when_to_say": "When referring to creating or doing tasks.",
+                  "example": "Ich mache meine Hausaufgaben. (ich MAH-kheh MY-neh HAU-sof-gah-ben) - I do my homework."
+                },
+                {
+                  "id": "115",
+                  "word": "verstehen",
+                  "pronunciation": "fer-SHTAY-en",
+                  "meaning": "To understand",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 5,
+                  "when_to_say": "When seeking or expressing comprehension.",
+                  "example": "Ich verstehe die Frage. (ich fer-SHTAY-eh dee FRAH-geh) - I understand the question."
+                },
+                {
+                  "id": "116",
+                  "word": "lesen",
+                  "pronunciation": "LAY-zen",
+                  "meaning": "To read",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 6,
+                  "when_to_say": "When referring to reading material.",
+                  "example": "Sie liest ein Buch. (zee leest ayn bookh) - She is reading a book."
+                },
+                {
+                  "id": "117",
+                  "word": "laufen",
+                  "pronunciation": "LOW-fen",
+                  "meaning": "To walk/run",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 7,
+                  "when_to_say": "When discussing movement.",
+                  "example": "Wir laufen jeden Morgen. (veer LOW-fen YAY-den MOR-gen) - We walk every morning."
+                },
+                {
+                  "id": "118",
+                  "word": "suchen",
+                  "pronunciation": "ZOO-chen",
+                  "meaning": "To search",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 8,
+                  "when_to_say": "When looking for something.",
+                  "example": "Ich suche meine Brille. (ich ZOO-cheh MY-neh BRIL-leh) - I am searching for my glasses."
+                },
+                {
+                  "id": "119",
+                  "word": "vergessen",
+                  "pronunciation": "fer-GEH-sen",
+                  "meaning": "To forget",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 9,
+                  "when_to_say": "When referring to memory lapses.",
+                  "example": "Hast du das vergessen? (hast doo das fer-GEH-sen) - Did you forget that?"
+                },
+                {
+                  "id": "120",
+                  "word": "wissen",
+                  "pronunciation": "VISS-en",
+                  "meaning": "To know (fact)",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 10,
+                  "when_to_say": "When talking about factual knowledge.",
+                  "example": "Ich weiß die Antwort. (ich vice dee ANT-vort) - I know the answer."
+                },
+                {
+                  "id": "121",
+                  "word": "stehen",
+                  "pronunciation": "SHTAY-en",
+                  "meaning": "To stand",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 1,
+                  "when_to_say": "When referring to being upright.",
+                  "example": "Ich stehe im Zimmer. (ich SHTAY-eh im TSIH-mer) - I stand in the room."
+                },
+                {
+                  "id": "122",
+                  "word": "fahren",
+                  "pronunciation": "FAH-ren",
+                  "meaning": "To drive",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 2,
+                  "when_to_say": "When referring to vehicle travel.",
+                  "example": "Wir fahren nach Hause. (veer FAH-ren nahch HAU-zeh) - We drive home."
+                },
+                {
+                  "id": "123",
+                  "word": "nehmen",
+                  "pronunciation": "NAY-men",
+                  "meaning": "To take",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 3,
+                  "when_to_say": "When picking something up.",
+                  "example": "Ich nehme den Bus. (ich NAY-meh den boos) - I take the bus."
+                },
+                {
+                  "id": "124",
+                  "word": "tragen",
+                  "pronunciation": "TRAH-gen",
+                  "meaning": "To wear",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 4,
+                  "when_to_say": "When referring to clothing or carrying items.",
+                  "example": "Ich trage einen Hut. (ich TRAH-geh eye-nen hoot) - I wear a hat."
+                },
+                {
+                  "id": "125",
+                  "word": "spielen",
+                  "pronunciation": "SPEE-len",
+                  "meaning": "To play",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 5,
+                  "when_to_say": "When referring to games or sports.",
+                  "example": "Wir spielen Fußball. (veer SPEE-len FOOS-bal) - We play soccer."
+                },
+                {
+                  "id": "126",
+                  "word": "helfen",
+                  "pronunciation": "HEL-fen",
+                  "meaning": "To help",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 6,
+                  "when_to_say": "When offering or asking for assistance.",
+                  "example": "Kannst du mir helfen? (kahnst doo meer HEL-fen) - Can you help me?"
+                },
+                {
+                  "id": "127",
+                  "word": "arbeiten",
+                  "pronunciation": "AR-bite-en",
+                  "meaning": "To work",
+                  "part_of_speech": "verb",
+                  "difficulty": "medium",
+                  "lesson_no": 7,
+                  "when_to_say": "When referring to a job or task.",
+                  "example": "Er arbeitet im Büro. (air AR-bite-et im bew-ROH) - He works in the office."
+                },
+                {
+                  "id": "128",
+                  "word": "lernen",
+                  "pronunciation": "LARE-nen",
+                  "meaning": "To learn",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 8,
+                  "when_to_say": "When studying or gaining knowledge.",
+                  "example": "Ich lerne für die Prüfung. (ich LARE-neh feur dee PROO-foong) - I am studying for the exam."
+                },
+                {
+                  "id": "129",
+                  "word": "schlafen",
+                  "pronunciation": "SHLAH-fen",
+                  "meaning": "To sleep",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 9,
+                  "when_to_say": "When referring to rest.",
+                  "example": "Das Baby schläft ruhig. (das BAY-bee shlayft ROO-ig) - The baby sleeps peacefully."
+                },
+                {
+                  "id": "130",
+                  "word": "kochen",
+                  "pronunciation": "KOH-chen",
+                  "meaning": "To cook",
+                  "part_of_speech": "verb",
+                  "difficulty": "easy",
+                  "lesson_no": 10,
+                  "when_to_say": "When referring to meal preparation.",
+                  "example": "Ich koche das Abendessen. (ich KOH-cheh das AH-bent-ess-en) - I cook dinner."
+                }
+              
+              
         
         
     

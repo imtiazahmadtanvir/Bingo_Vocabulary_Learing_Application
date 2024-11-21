@@ -11,7 +11,6 @@ const Lesson = () => {
             index === self.findIndex((l) => l.lesson_no === lesson.lesson_no)
     );
 
-    console.log("Filtered Data:", uniqueLessons);
 
     return (
         <div className="">
@@ -30,7 +29,7 @@ const Lesson = () => {
                                 Lesson {lesson.lesson_no}
                             </h2>
 
-                            <button className="btn btn-primary">Start Lesson {lesson.lesson_no}</button>
+                            <button className="btn btn-success bg-yellow-400 border-0 px-2" >Start Lesson {lesson.lesson_no}</button>
                         </Link>
 
                     ))}

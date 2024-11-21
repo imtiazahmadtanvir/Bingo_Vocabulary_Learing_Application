@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         path: "/lesson",
         element: <PrivateRoute><Lesson></Lesson></PrivateRoute>
         ,
-        loader: () => fetch("/voc.json"),
+        loader: () => fetch("/voc.json").then(res => res.json()),
     },
     {
         path: "/lesson/:lessonId", // Dynamic route for lesson details
@@ -50,11 +50,11 @@ const router = createBrowserRouter([
                 element: <Login></Login>,
             },
             {
-                path: "login",
+                path: "auth/login",
                 element: <Login></Login>,
             },
             {
-                path: "register",
+                path: "auth/register",
                 element: <Register></Register>,
             },
         ],

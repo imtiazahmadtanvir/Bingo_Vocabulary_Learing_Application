@@ -7,13 +7,13 @@ const Login = () => {
   const [error, setError] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log(location);
+  // .log(location);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log({ email, password });
+    // .log({ email, password });
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
@@ -60,18 +60,18 @@ const Login = () => {
               </label>
             )}
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
+              <a to="/register" className="label-text-alt link link-hover">
                 Forgot password?
               </a>
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary bg-yellow-400 rounded-lg">Login</button>
+            <Link className="btn btn-primary bg-yellow-400 rounded-lg">Login</Link>
           </div>
         </form>
         <p className="text-center font-semibold">
           Dont’t Have An Account ?{" "}
-          <Link className="text-red-500" to="register">
+          <Link className="text-red-500" to="/register">
             Register
           </Link>
         </p>
