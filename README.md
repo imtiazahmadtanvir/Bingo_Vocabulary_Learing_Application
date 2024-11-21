@@ -6,8 +6,9 @@ Lingo Bingo is a fun and interactive single-page web application designed to hel
 ---
 
 ## **Live URL**
-[Your Live URL Here](#)  
-(Host the application on platforms like [Netlify](https://www.netlify.com/), [Firebase](https://firebase.google.com/), or [Surge](https://surge.sh/))  
+Page: https://lingo-bingo-56adb.web.app/
+
+Backup: https://idyllic-kheer-1916ef.netlify.app/ 
 
 ---
 
