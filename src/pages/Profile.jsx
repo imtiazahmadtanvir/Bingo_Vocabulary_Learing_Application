@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const { user } = useContext(AuthContext);
 
+  console.log("from home", user)
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold mb-6 text-center">My Profile</h1>

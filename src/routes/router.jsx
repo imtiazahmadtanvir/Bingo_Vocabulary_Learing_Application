@@ -9,32 +9,33 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import PrivateRoute from "./PrivateRoute";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout></HomeLayout>,
+        errorElement: <h1>Error</h1>
     },
     {
         path: "/lesson",
-        element: <PrivateRoute><Lesson></Lesson></PrivateRoute>
+        element: <Lesson></Lesson>
         ,
         loader: () => fetch("/voc.json").then(res => res.json()),
     },
     {
         path: "/lesson/:lessonId", // Dynamic route for lesson details
-        element: <PrivateRoute><LessonDetails></LessonDetails></PrivateRoute>
+        element: <LessonDetails></LessonDetails>
         ,
         loader: () => fetch("/voc.json").then(res => res.json())
     },
     {
         path: "/tutorials",
-        element:<PrivateRoute><Totorials></Totorials></PrivateRoute> 
-        ,
+        element: <PrivateRoute><Totorials></Totorials></PrivateRoute>,
     },
     {
         path: "/profile",
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        element: <Profile></Profile>
         ,
     },
     {
@@ -46,23 +47,20 @@ const router = createBrowserRouter([
         element: <AuthLayout></AuthLayout>,
         children: [
             {
-                path: "", // Default route for /auth
+                path: "login",
                 element: <Login></Login>,
             },
             {
-                path: "auth/login",
-                element: <Login></Login>,
-            },
-            {
-                path: "auth/register",
+                path: "register",
                 element: <Register></Register>,
+            },
+            {
+                path: "reset-password",
+                element: <ForgetPassword />,
             },
         ],
     },
-    {
-        path: "*",
-        element: <h1>Error</h1>, 
-    },
+
 ]);
 
 export default router;

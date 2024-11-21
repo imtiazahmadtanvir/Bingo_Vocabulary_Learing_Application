@@ -3,27 +3,26 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
-  const { userLogin, setUser } = useContext(AuthContext);
+  const { userLogin } = useContext(AuthContext);
   const [error, setError] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-  // .log(location);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // .log({ email, password });
+
     userLogin(email, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        navigate(location?.state ? location.state : "/");
+      .then(() => {
+        navigate(location?.state?.from || "/");
       })
       .catch((err) => {
         setError({ ...error, login: err.code });
       });
   };
+
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="w-10/12 mx-auto card bg-base-100 lg:w-full max-w-lg shrink-0 rounded-lg p-10">
@@ -60,18 +59,20 @@ const Login = () => {
               </label>
             )}
             <label className="label">
-              <a to="/register" className="label-text-alt link link-hover">
+              <Link to="/auth/reset-password" className="label-text-alt link link-hover">
                 Forgot password?
-              </a>
+              </Link>
             </label>
           </div>
           <div className="form-control mt-6">
-            <Link className="btn btn-primary bg-yellow-400 rounded-lg">Login</Link>
+            <button type="submit" className="btn btn-primary bg-yellow-400 rounded-lg">
+              Login
+            </button>
           </div>
         </form>
         <p className="text-center font-semibold">
-          Dont’t Have An Account ?{" "}
-          <Link className="text-red-500" to="/register">
+          Don’t Have An Account?{" "}
+          <Link to="/auth/register" className="text-red-500">
             Register
           </Link>
         </p>
