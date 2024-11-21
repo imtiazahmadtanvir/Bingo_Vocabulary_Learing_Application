@@ -16,7 +16,7 @@ const HomeLayout = () => {
                         <Header></Header>
             </header>
 
-            <main className="bg-gradient-to-r bg-blue-700  p-10  text-center text-white shadow-lg">
+            <main className="bg-gradient-to-r bg-gray-700  p-10  text-center text-white shadow-lg">
                         <Banner></Banner>
                         <Aboutus></Aboutus>
                         <Success></Success>

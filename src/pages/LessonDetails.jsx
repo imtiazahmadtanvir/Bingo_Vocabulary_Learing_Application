@@ -26,7 +26,7 @@ const LessonDetails = () => {
 
                 <Header></Header>
 
-            <div className="bg-gradient-to-r bg-blue-700  p-10  text-center text-white shadow-lg min-h-screen  flex flex-col items-center py-10 ">
+            <div className="bg-gradient-to-r bg-gray-600  p-10  text-center text-white shadow-lg min-h-screen  flex flex-col items-center py-10 ">
 
                 <h1 className="text-4xl font-bold text-white mb-8">Lesson {lessonId}</h1>
 
